@@ -1,0 +1,42 @@
+#include &lt;iostream&gt;
+#include &lt;iomanip&gt; // For fixed and setprecision
+using namespace std;
+
+const int NUM_EXPERIMENTS = 3;
+const int NUM_READINGS = 3;
+
+int main() {
+double readingValue, total, average;
+
+for (int i = 1; i &lt;= NUM_EXPERIMENTS; i++) {
+total = 0; // Reset total for each experiment
+cout &lt;&lt; &quot;\nEXPERIMENT &quot; &lt;&lt; i &lt;&lt; &quot;:\n&quot;;
+cout &lt;&lt; &quot;-------------------\n&quot;;
+
+for (int j = 1; j &lt;= NUM_READINGS; j++) {
+cout &lt;&lt; &quot;Enter reading &quot; &lt;&lt; j &lt;&lt; &quot; value: &quot;;
+cin &gt;&gt; readingValue;
+total += readingValue; // Accumulate the readings
+}
+
+average = total / NUM_READINGS; // Calculate the average
+
+// Evaluate the average against the acceptable ranges
+if (average &lt; 100) {
+cout &lt;&lt; &quot;Experiment &quot; &lt;&lt; i &lt;&lt; &quot; average: &quot; &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt;
+average
+
+&lt;&lt; &quot; is Below acceptable range\n&quot;;
+} else if (average &gt;= 100 &amp;&amp; average &lt;= 300) {
+cout &lt;&lt; &quot;Experiment &quot; &lt;&lt; i &lt;&lt; &quot; average: &quot; &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt;
+average
+&lt;&lt; &quot; is Within acceptable range\n&quot;;
+} else {
+cout &lt;&lt; &quot;Experiment &quot; &lt;&lt; i &lt;&lt; &quot; average: &quot; &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt;
+average
+&lt;&lt; &quot; is Above acceptable range\n&quot;;
+}
+}
+
+return 0;
+}
